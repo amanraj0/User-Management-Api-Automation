@@ -109,9 +109,9 @@ public class SignupTest {
     @Test(description = "Verify that user is able to signup on providing all valid parameters")
     public void signupUserWithValidParameter(){
         SignupRequest signupUser = SignupRequest.builder()
-                                        .username("raj.aman123")
+                                        .username("raj.aman1234")
                                         .password("Testing@123")
-                                        .email("raj.aman123@test.com")
+                                        .email("raj.aman1234@test.com")
                                         .firstName("Aman")
                                         .lastName("Raj")
                                         .mobileNumber("0909876567")
@@ -130,9 +130,9 @@ public class SignupTest {
     )
     public void alreadyRegisteredUsernameForSignup(){
         SignupRequest signupUser = SignupRequest.builder()
-                .username("raj.aman123")
+                .username("raj.aman1234")
                 .password("Testing@123")
-                .email("raj.aman123@test.com")
+                .email("raj.aman1234@test.com")
                 .firstName("Aman")
                 .lastName("Raj")
                 .mobileNumber("0909876567")
@@ -152,7 +152,7 @@ public class SignupTest {
     public void alreadyRegisteredEmailForSignup(){
         SignupRequest signupUser = SignupRequest.builder()
                 .username("raj.aman124")
-                .password("Testing@123")
+                .password("Testing@1234")
                 .email("raj.aman12@test.com")
                 .firstName("Aman")
                 .lastName("Raj")

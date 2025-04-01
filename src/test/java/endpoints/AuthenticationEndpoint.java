@@ -1,5 +1,8 @@
 package endpoints;
 
+import lombok.Getter;
+
+@Getter
 public enum AuthenticationEndpoint {
     LOGIN("api/auth/login"),
     FORGOT_PASSWORD("api/auth/forgot-password"),
@@ -12,7 +15,4 @@ public enum AuthenticationEndpoint {
         this.endpoint = endpoint;
     }
 
-    public String getEndpoint() {
-        return endpoint;
-    }
 }
