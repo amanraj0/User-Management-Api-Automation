@@ -1,0 +1,36 @@
+name: End to End API Automation for Usermanagement APIs
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: Set up Maven
+        uses: mvn install
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Execute End to End API Script
+        uses: mvn test
+  artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Upload Test log
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-log
+          path: log/*
