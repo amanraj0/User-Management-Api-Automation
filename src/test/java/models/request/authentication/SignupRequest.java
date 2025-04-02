@@ -1,4 +1,4 @@
-package models.request;
+package models.request.authentication;
 
 import lombok.Builder;
 import lombok.Data;
