@@ -3,11 +3,16 @@ package tests.authentication.signup;
 import base.AuthenticationService;
 import constants.authentication.signup.SignupResponseConstant;
 import io.restassured.response.Response;
-import models.request.SignupRequest;
+import models.request.authentication.SignupRequest;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(listeners.TestListeners.class)
 public class SignupTest {
+
 
     @Test(description = "Verify that username is a mandatory field for signup and user gets 500 status code")
     public void usernameMandatoryForSignup(){
