@@ -1,11 +1,9 @@
-package tests.authentication.signup;
+package tests.authentication;
 
 import base.AuthenticationService;
 import constants.authentication.signup.SignupResponseConstant;
 import io.restassured.response.Response;
 import models.request.authentication.SignupRequest;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
