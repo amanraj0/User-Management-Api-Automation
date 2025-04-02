@@ -1,4 +1,4 @@
-package tests.authentication.login;
+package tests.authentication;
 
 import base.AuthenticationService;
 import constants.authentication.login.LoginResponseConstant;

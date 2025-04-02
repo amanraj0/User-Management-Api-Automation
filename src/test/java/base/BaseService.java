@@ -1,7 +1,6 @@
 package base;
 
 import static io.restassured.RestAssured.*;
-
 import filters.LoggingFilter;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -23,7 +22,21 @@ public class BaseService {
                                 .baseUri(BASE_URL);
     }
 
+    public void setAuthToken(String token){
+        requestSpecification.header(
+                "Authorization",
+                "Bearer " + token
+        );
+    }
+
     protected Response post(Object payload, String endpoint){
+        return requestSpecification
+                .contentType(ContentType.JSON)
+                .body(payload)
+                .post(endpoint);
+    }
+
+    protected Response put(Object payload, String endpoint){
         return requestSpecification
                 .contentType(ContentType.JSON)
                 .body(payload)
