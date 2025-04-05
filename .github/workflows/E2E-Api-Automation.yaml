@@ -20,6 +20,5 @@ jobs:
           cache: 'maven'
       - name: Execute End to End API Script
         run: |
-          ls -lr
-          mvn -v
+          mvn clean test -Pdev -Dsuite=Regression
       
