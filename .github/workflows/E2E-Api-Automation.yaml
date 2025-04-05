@@ -16,14 +16,29 @@ jobs:
           distribution: 'temurin'
           java-version: 21
       - name: Set up Maven
-        uses: mvn install
+        uses: apache/maven-action@v2
+        with:
+          maven-version: '3.8.1'
+      - name: Build with Maven
+        run: mvn clean install  # This runs Maven's install goal
+
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: Set up Maven
+        uses: apache/maven-action@v2
+        with:
+          maven-version: '3.8.1'
       - name: Execute End to End API Script
-        uses: mvn test
+        run: mvn test  # This runs Maven's test goal
+
   artifacts:
     runs-on: ubuntu-latest
     steps:
