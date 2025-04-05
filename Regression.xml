@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Usermanagement Regression Suite">
+    <test name="Usermanagement Regression Tests">
+        <classes>
+            <class name="tests.authentication.SignupTest"/>
+            <class name="tests.authentication.LoginTest"/>
+            <class name="tests.usermanagement.ChangePasswordTest"/>
+
+        </classes>
+    </test>
+</suite>

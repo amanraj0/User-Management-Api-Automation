@@ -7,20 +7,22 @@ import models.request.authentication.SignupRequest;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.Helper;
 
 @Listeners(listeners.TestListeners.class)
 public class SignupTest {
 
+    Helper helper = new Helper();
 
     @Test(description = "Verify that username is a mandatory field for signup and user gets 500 status code")
     public void usernameMandatoryForSignup(){
         SignupRequest signUpWithoutUsername =  SignupRequest.builder()
                 .username("")
-                .password("Testing")
-                .email("aman.raj@gmail.com")
-                .firstName("Aman")
-                .lastName("Raj")
-                .mobileNumber("8098767654")
+                .password(helper.read("ValidPassword"))
+                .email(helper.read("ValidEmail"))
+                .firstName(helper.read("Firstname"))
+                .lastName(helper.read("Lastname"))
+                .mobileNumber(helper.read("MobileNumber"))
                 .build();
 
         AuthenticationService signupService = new AuthenticationService();
@@ -32,12 +34,12 @@ public class SignupTest {
     @Test(description = "Verify that password is a mandatory field for signup and user gets 500 status code")
     public void passwordMandatoryForSignup(){
         SignupRequest signUpWithoutPassword =  SignupRequest.builder()
-                .username("aman")
+                .username(helper.read("ValidUsername"))
                 .password("")
-                .email("aman.raj@gmail.com")
-                .firstName("Aman")
-                .lastName("Raj")
-                .mobileNumber("8098767654")
+                .email(helper.read("ValidEmail"))
+                .firstName(helper.read("Firstname"))
+                .lastName(helper.read("Lastname"))
+                .mobileNumber(helper.read("MobileNumber"))
                 .build();
 
         AuthenticationService signupService = new AuthenticationService();
@@ -48,12 +50,12 @@ public class SignupTest {
     @Test(description = "Verify that email is a mandatory field for signup and user gets 500 status code")
     public void emailMandatoryForSignup(){
         SignupRequest signUpWithoutEmail =  SignupRequest.builder()
-                .username("aman")
-                .password("Testing")
+                .username(helper.read("ValidUsername"))
+                .password(helper.read("ValidPassword"))
                 .email("")
-                .firstName("Aman")
-                .lastName("Raj")
-                .mobileNumber("8098767654")
+                .firstName(helper.read("Firstname"))
+                .lastName(helper.read("Lastname"))
+                .mobileNumber(helper.read("MobileNumber"))
                 .build();
 
         AuthenticationService signupService = new AuthenticationService();
@@ -64,12 +66,12 @@ public class SignupTest {
     @Test(description = "Verify that First Name is a mandatory field for signup and user gets 500 status code")
     public void firstnameMandatoryForSignup(){
         SignupRequest signUpWithoutFirstName =  SignupRequest.builder()
-                .username("aman")
-                .password("Testing")
-                .email("aman@test.com")
+                .username(helper.read("ValidUsername"))
+                .password(helper.read("ValidPassword"))
+                .email(helper.read("ValidEmail"))
                 .firstName("")
-                .lastName("Raj")
-                .mobileNumber("8098767654")
+                .lastName(helper.read("Lastname"))
+                .mobileNumber(helper.read("MobileNumber"))
                 .build();
 
         AuthenticationService signupService = new AuthenticationService();
@@ -80,12 +82,12 @@ public class SignupTest {
     @Test(description = "Verify that Last Name is a mandatory field for signup and user gets 500 status code")
     public void lastnameMandatoryForSignup(){
         SignupRequest signUpWithoutLastName =  SignupRequest.builder()
-                .username("aman")
-                .password("Testing")
-                .email("aman@test.com")
-                .firstName("Aman")
+                .username(helper.read("ValidUsername"))
+                .password(helper.read("ValidPassword"))
+                .email(helper.read("ValidEmail"))
+                .firstName(helper.read("Firstname"))
                 .lastName("")
-                .mobileNumber("8098767654")
+                .mobileNumber(helper.read("MobileNumber"))
                 .build();
 
         AuthenticationService signupService = new AuthenticationService();
@@ -96,11 +98,11 @@ public class SignupTest {
     @Test(description = "Verify that Mobile number is a mandatory field for signup and user gets 500 status code")
     public void mobileNumberMandatoryForSignup(){
         SignupRequest signUpWithoutMobileNumber =  SignupRequest.builder()
-                                                            .username("aman")
-                                                            .password("Testing")
-                                                            .email("aman@test.com")
-                                                            .firstName("Aman")
-                                                            .lastName("Raj")
+                                                            .username(helper.read("ValidUsername"))
+                                                            .password(helper.read("ValidPassword"))
+                                                            .email(helper.read("ValidEmail"))
+                                                            .firstName(helper.read("Firstname"))
+                                                            .lastName(helper.read("Lastname"))
                                                             .mobileNumber("")
                                                             .build();
 
@@ -112,12 +114,12 @@ public class SignupTest {
     @Test(description = "Verify that user is able to signup on providing all valid parameters")
     public void signupUserWithValidParameter(){
         SignupRequest signupUser = SignupRequest.builder()
-                                        .username("raj.aman1234")
-                                        .password("Testing@123")
-                                        .email("raj.aman1234@test.com")
-                                        .firstName("Aman")
-                                        .lastName("Raj")
-                                        .mobileNumber("0909876567")
+                                        .username(helper.read("ValidUsername"))
+                                        .password(helper.read("ValidPassword"))
+                                        .email(helper.read("ValidEmail"))
+                                        .firstName(helper.read("Firstname"))
+                                        .lastName(helper.read("Lastname"))
+                                        .mobileNumber(helper.read("MobileNumber"))
                                         .build();
 
         AuthenticationService signupService = new AuthenticationService();
@@ -133,13 +135,13 @@ public class SignupTest {
     )
     public void alreadyRegisteredUsernameForSignup(){
         SignupRequest signupUser = SignupRequest.builder()
-                .username("raj.aman1234")
-                .password("Testing@123")
-                .email("raj.aman1234@test.com")
-                .firstName("Aman")
-                .lastName("Raj")
-                .mobileNumber("0909876567")
-                .build();
+                                        .username(helper.read("ValidUsername"))
+                                        .password(helper.read("ValidPassword"))
+                                        .email(helper.read("ValidEmail"))
+                                        .firstName(helper.read("Firstname"))
+                                        .lastName(helper.read("Lastname"))
+                                        .mobileNumber(helper.read("MobileNumber"))
+                                        .build();
 
         AuthenticationService signupService = new AuthenticationService();
         Response response = signupService.signup(signupUser);
@@ -154,13 +156,13 @@ public class SignupTest {
     )
     public void alreadyRegisteredEmailForSignup(){
         SignupRequest signupUser = SignupRequest.builder()
-                .username("raj.aman124")
-                .password("Testing@1234")
-                .email("raj.aman12@test.com")
-                .firstName("Aman")
-                .lastName("Raj")
-                .mobileNumber("0909876567")
-                .build();
+                                        .username(helper.read("NewValidUsername"))
+                                        .password(helper.read("ValidPassword"))
+                                        .email(helper.read("ValidEmail"))
+                                        .firstName(helper.read("Firstname"))
+                                        .lastName(helper.read("Lastname"))
+                                        .mobileNumber(helper.read("MobileNumber"))
+                                        .build();
 
         AuthenticationService signupService = new AuthenticationService();
         Response response = signupService.signup(signupUser);

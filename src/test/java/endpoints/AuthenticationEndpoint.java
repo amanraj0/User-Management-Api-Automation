@@ -11,8 +11,11 @@ public enum AuthenticationEndpoint {
 
     private final String endpoint;
 
-    AuthenticationEndpoint(String endpoint){
+    AuthenticationEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
 
+    public String getEndpoint() {
+        return this.endpoint;
+    }
 }
