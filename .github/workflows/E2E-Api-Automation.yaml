@@ -1,6 +1,26 @@
 name: End to End API Automation for Usermanagement APIs
 on:
   workflow_dispatch:
+    inputs:
+      profile:
+        description: Env to run test on
+        required: true
+        default: 'sit'
+        type: choice
+        options:
+          -  dev
+          -  sit
+          -  uat
+      suite:
+        description: Test Suite to run
+        required: true
+        default: 'smoke'
+        type: choice
+        options:
+          -  Regression
+          -  Smoke
+          -  Sanity
+        
 
 jobs:
   test:
