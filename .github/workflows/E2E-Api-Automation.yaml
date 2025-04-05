@@ -19,7 +19,9 @@ jobs:
           java-version: 21
           cache: 'maven'
       - name: Execute End to End API Script
-        run: mvn clean test -Pdev -Dsuite=Regression
+        run: |
+          ls -lr
+          mvn clean test -Pdev -Dsuite=Regression
       - name: upload-artifact
         uses: actions/upload-artifact@v4
         with:
