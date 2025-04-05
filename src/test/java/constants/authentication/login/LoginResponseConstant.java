@@ -1,8 +1,6 @@
 package constants.authentication.login;
 
-import lombok.Getter;
 
-@Getter
 public enum LoginResponseConstant {
     USERNAME_PASSWORD_INCORRECT_MESSAGE("The username or password you entered is incorrect"),
     USERNAME_PASSWORD_INCORRECT_ERROR("Invalid Credentials"),
