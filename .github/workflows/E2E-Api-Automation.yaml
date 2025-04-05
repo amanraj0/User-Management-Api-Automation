@@ -21,7 +21,7 @@ jobs:
       - name: Execute End to End API Script
         run: |
           ls -lr
-          mvn clean test -Pdev -Dsuite=Regression
+          mvn clean test -Pdev -Dsuite=Regression -Dmaven.compiler.release=21
       - name: upload-artifact
         uses: actions/upload-artifact@v4
         with:
