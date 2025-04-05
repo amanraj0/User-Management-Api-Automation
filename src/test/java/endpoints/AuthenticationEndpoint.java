@@ -1,8 +1,6 @@
 package endpoints;
 
-import lombok.Getter;
 
-@Getter
 public enum AuthenticationEndpoint {
     LOGIN("api/auth/login"),
     FORGOT_PASSWORD("api/auth/forgot-password"),
