@@ -14,6 +14,44 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <baseUrl>${baseUrl}</baseUrl> <!-- Pass profile property to tests -->
+                        <!--    Test Data path-->
+                        <testDataFilePath>${project.basedir}/src/test/resources/testdata/UsermanagementTestData.xlsx</testDataFilePath>
+                    </systemPropertyVariables>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                           ${suite}.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+    <!--Development Profile-->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <baseUrl>http://64.227.160.186:8080</baseUrl>
+            </properties>
+        </profile>
+        <profile>
+            <id>sit</id>
+            <properties>
+                <baseUrl>http:sit.//64.227.160.186:8080</baseUrl>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -29,7 +67,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.36</version>
+            <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -56,6 +94,11 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.24.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.4.0</version>
         </dependency>
     </dependencies>
 

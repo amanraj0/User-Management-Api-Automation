@@ -12,13 +12,14 @@ import utils.Helper;
 
 @Listeners(listeners.TestListeners.class)
 public class LoginTest {
-    public static String loginToken = null;
+    //public static String loginToken = null;
+    Helper helper = new Helper();
 
     @Test(description = "Verify that user gets 401 and error message on providing incorrect combination of username and password")
     public void incorrectCombinationForUsernamePassword(){
         LoginRequest mismatchUsernameAndPassword = LoginRequest.builder()
-                                                        .username("incorrectUser")
-                                                        .password("incorrectPassword")
+                                                        .username(helper.read("ValidUsername"))
+                                                        .password(helper.read("IncorrectPassword"))
                                                         .build();
         AuthenticationService loginService = new AuthenticationService();
 
@@ -31,16 +32,16 @@ public class LoginTest {
     @Test(description = "Verify that on successful login user gets the 200 status code along with token")
     public void loginWithValidCredentials(){
         LoginRequest validCredential = LoginRequest.builder()
-                                            .username("aman")
-                                            .password("aman@1234")
-                                            .build();
+                .username(helper.read("ValidUsername"))
+                .password(helper.read("ValidPassword"))
+                .build();
 
         AuthenticationService loginService = new AuthenticationService();
         Response response = loginService.login(validCredential);
         Assert.assertEquals(response.statusCode(),200,"Login response should be 200 for successful login");
         LoginResponse actualLoginResponse = response.as(LoginResponse.class);
         Assert.assertEquals(actualLoginResponse.getUsername(),validCredential.getUsername(),"Username in response is not matching with the logged in user");
-        loginToken = actualLoginResponse.getToken();
+        String loginToken = actualLoginResponse.getToken();
     }
 
 }

@@ -10,7 +10,11 @@ public enum LoginResponseConstant {
 
     private final String message;
 
-    LoginResponseConstant(String message){
+    LoginResponseConstant(String message) {
         this.message = message;
+    }
+
+    public String getMessage() {
+        return this.message;
     }
 }

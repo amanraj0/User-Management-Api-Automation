@@ -9,7 +9,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class BaseService {
 
-    public static final String BASE_URL="http://64.227.160.186:8080";
+    public static final String BASE_URL = System.getProperty("baseUrl");
 
     private final RequestSpecification requestSpecification;
 
@@ -40,6 +40,6 @@ public class BaseService {
         return requestSpecification
                 .contentType(ContentType.JSON)
                 .body(payload)
-                .post(endpoint);
+                .put(endpoint);
     }
 }

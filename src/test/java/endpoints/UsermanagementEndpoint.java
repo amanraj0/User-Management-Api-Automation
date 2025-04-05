@@ -8,9 +8,12 @@ public enum UsermanagementEndpoint {
 
     private final String endpoint;
 
-    UsermanagementEndpoint(String endpoint){
+    UsermanagementEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
 
 
+    public String getEndpoint() {
+        return this.endpoint;
+    }
 }
